@@ -19,7 +19,7 @@ const GenerateCards = () => {
               <Card.Text className='pt-2 mb-0'><strong>Author:</strong> {post.author}</Card.Text>
               <Card.Text><strong>Description:</strong> {post.content}</Card.Text>
               <Link to={`/post/${post.id}`}>
-                <Button variant="warning" >Read More</Button>
+                <Button variant="primary" >Read More</Button>
               </Link>
             </Card.Body>
           </Card>
