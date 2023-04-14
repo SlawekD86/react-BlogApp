@@ -1,3 +1,4 @@
+import React from 'react';
 import GenerateCards from '../../Features/GenerateCards';
 import SiteTitles from '../../SiteTitles/SiteTitles';
 import { Button } from 'react-bootstrap';

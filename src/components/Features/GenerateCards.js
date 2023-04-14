@@ -1,3 +1,4 @@
+import React from 'react';
 import {Card, Row, Button, Col} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getAllPosts } from '../../redux/postsRedux';
