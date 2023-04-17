@@ -3,7 +3,7 @@ import { getPostsById } from '../../../redux/postsRedux';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { Card, Row, Button, Col, Modal } from 'react-bootstrap';
-import SiteTitles from '../../SiteTitles/SiteTitles';
+import SiteTitle from '../../SiteTitle/SiteTitle';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeCard } from '../../../redux/postsRedux';
@@ -13,7 +13,6 @@ const Post = () => {
   const { postId } = useParams();
 
   const renderPostById = useSelector((state) => getPostsById(state, postId));
-  console.log(renderPostById);
 
   //Modal
   const [show, setShow] = useState(false);
@@ -32,7 +31,7 @@ const Post = () => {
   if (!renderPostById) return <Navigate to="/" />;
   return (
     <Row className="justify-content-center">
-      <SiteTitles>Post</SiteTitles>
+      <SiteTitle>Post</SiteTitle>
       <Col xs={6} md={6} lg={6} key={renderPostById.id} className="my-3">
         <Card>
           <Card.Body>
@@ -61,8 +60,6 @@ const Post = () => {
         </Modal.Footer>
       </Modal>
     </Row>
-
-
   );
 };
 

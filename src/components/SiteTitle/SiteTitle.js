@@ -1,4 +1,4 @@
-const SiteTitles = (props) => {
+const SiteTitle = (props) => {
     return (
       <div>
         <h1>{props.children}</h1>
@@ -6,4 +6,4 @@ const SiteTitles = (props) => {
     );
   };
   
-  export default SiteTitles;
+  export default SiteTitle;
