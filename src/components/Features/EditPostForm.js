@@ -7,19 +7,19 @@ import { useSelector } from 'react-redux';
 import { getPostsById } from '../../redux/postsRedux';
 
 const EditPostForm = () => {
-  const { id } = useParams(); 
-  const post = useSelector((state) => getPostsById(state, id)); 
+    const { id } = useParams();
+    const post = useSelector((state) => getPostsById(state, id));
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-  const handleSubmit = (post) => {
-    dispatch(editPost({ ...post, id }));
-    navigate('/');
-  };
+    const handleSubmit = (post) => {
+        dispatch(editPost({ ...post, id }));
+        navigate('/');
+    };
 
-  if (!post) return <Navigate to="/" />;
-  else return <PostForm action={handleSubmit} actionText="Edit Post" title={post.title} author={post.author} publishedDate={post.publishedDate} content={post.content}></PostForm>;
+    if (!post) return <Navigate to="/" />;
+    else return <PostForm action={handleSubmit} actionText="Edit Post" title={post.title} author={post.author} publishedDate={post.publishedDate} content={post.content}></PostForm>;
 };
 
 export default EditPostForm;

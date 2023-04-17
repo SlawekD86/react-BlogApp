@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useParams, Link } from 'react-router-dom';
 import { getPostsById } from '../../../redux/postsRedux';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
@@ -38,7 +38,9 @@ const Post = () => {
             <div className="d-flex justify-content-between"> 
               <Card.Title>{renderPostById.title}</Card.Title>
               <div>
-                <Button variant="outline-info" href={`/post/edit/` + renderPostById.id} className="mx-2">Edit</Button>
+                <Link to={`/post/edit/${renderPostById.id}`} className="mx-2">
+                  <Button variant="outline-info">Edit</Button>
+                </Link>
                 <Button variant="outline-danger" onClick={handleShow}>Delete</Button>
               </div>
             </div>
@@ -53,7 +55,7 @@ const Post = () => {
         <Modal.Header closeButton>
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>This operation will completly remove post.</Modal.Body>
+        <Modal.Body>This operation will completely remove post.</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
           <Button variant="danger" onClick={handleRemove}>Delete</Button>
