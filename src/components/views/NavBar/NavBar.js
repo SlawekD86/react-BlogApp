@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <Navbar bg="primary" variant="dark" className="mt-4 mb-4 rounded" expand="lg">
       <div className="container">
-        <Navbar.Brand href="/">Blog.app</Navbar.Brand>
+        <Navbar.Brand>Blog.app</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto flex-md-row">
