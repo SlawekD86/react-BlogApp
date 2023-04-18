@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { getPostsById } from '../../../redux/postsRedux';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { Card, Row, Button, Col, Modal } from 'react-bootstrap';
 import SiteTitle from '../../SiteTitle/SiteTitle';
 import React, { useState } from 'react';
@@ -11,7 +11,6 @@ import { removeCard } from '../../../redux/postsRedux';
 const Post = () => {
   const { postId } = useParams();
   const renderPostById = useSelector((state) => getPostsById(state, postId));
-  console.log(renderPostById);
 
   //Modal
   const [show, setShow] = useState(false);
@@ -37,12 +36,15 @@ const Post = () => {
             <div className="d-flex justify-content-between">
               <Card.Title>{renderPostById.title}</Card.Title>
               <div>
-                <Button variant="outline-info" href={`/post/edit/` + renderPostById.id} className="mx-2">Edit</Button>
+                <Link to={`/post/edit/` + renderPostById.id}>
+                  <Button variant="outline-info" className="mx-2">Edit</Button>
+                </Link>
                 <Button variant="outline-danger" onClick={handleShow}>Delete</Button>
               </div>
             </div>
             <Card.Subtitle className="mb-2 text-muted">{renderPostById.publishedDate}</Card.Subtitle>
             <Card.Text className="pt-2 mb-0"><strong>Author:</strong> {renderPostById.author}</Card.Text>
+            <Card.Text><strong>Category:</strong> {renderPostById.category}</Card.Text>
             <Card.Text><strong>Description:</strong> {renderPostById.content}</Card.Text>
           </Card.Body>
         </Card>
@@ -51,14 +53,13 @@ const Post = () => {
         <Modal.Header closeButton>
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>This operation will completly remove post.</Modal.Body>
+        <Modal.Body>This operation will completely remove post.</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
           <Button variant="danger" onClick={handleRemove}>Delete</Button>
         </Modal.Footer>
       </Modal>
     </Row>
-
   );
 };
 

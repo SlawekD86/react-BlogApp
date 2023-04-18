@@ -7,6 +7,7 @@ const initialState = {
       content: 'Short description of the article...',
       publishedDate: '02-02-2022',
       author: 'John Doe',
+      category: 'staff',
     },
     {
       id: '2',
@@ -15,6 +16,7 @@ const initialState = {
       content: 'Short description of the article...',
       publishedDate: '02-02-2022',
       author: 'John Doe',
+      category: 'examples',
     },
     {
       id: '3',
@@ -23,7 +25,9 @@ const initialState = {
       content: 'Short description of the article...',
       publishedDate: '02-02-2022',
       author: 'John Doe',
+      category: 'text',
     },
   ],
+  categories: ['examples', 'text', 'staff'],
 };
 export default initialState;

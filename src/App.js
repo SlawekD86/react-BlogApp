@@ -9,6 +9,7 @@ import PostAdd from './components/pages/PostAdd/PostAdd';
 import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
 import { Container } from 'react-bootstrap';
+import Category from './components/pages/Categories/Categories';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/categories" element={<Category />} />
         <Route path="/post/:postId" element={<Post />} />
         <Route path="/post/add" element={<PostAdd />} />
         <Route path="/post/edit/:id" element={<PostEdit />} />
