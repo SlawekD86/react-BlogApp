@@ -5,6 +5,7 @@ const SinglePost = ({ match }) => {
   const { postId } = match.params;
   const post = useSelector((state) => state.posts.find((post) => post.id === postId));
 
+
   return (
     <div>
       <h1>{post.title}</h1>

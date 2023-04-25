@@ -1,4 +1,6 @@
 import EditPostForm from "../../Features/EditPostForm";
+import React from 'react';
+
 
 const PostEdit = () => {
   return (

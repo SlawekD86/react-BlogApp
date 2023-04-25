@@ -3,13 +3,15 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PostForm from './PostForm';
 import shortid from 'shortid';
+import React from 'react';
+
 
 const AddPostForm = () => {
   const dispach = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = post => {
-    dispach(addPost( {id: shortid(), ...post}));
+    dispach(addPost({ id: shortid(), ...post }));
     navigate('/');
   };
 

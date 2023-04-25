@@ -5,10 +5,13 @@ import PostForm from './PostForm';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getPostsById } from '../../redux/postsRedux';
+import React from 'react';
+
 
 const EditPostForm = () => {
     const { id } = useParams();
     const post = useSelector((state) => getPostsById(state, id));
+
 
     const navigate = useNavigate();
     const dispatch = useDispatch();

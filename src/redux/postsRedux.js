@@ -14,6 +14,7 @@ export const removeCard = payload => ({ type: REMOVE_CARD, payload,});
 export const addPost = payload => ({ type: ADD_POST, payload,});
 export const editPost = payload => ({ type: EDIT_POST, payload,});
 
+
 const postsRecuder = (statePart = [], action) => {
   switch (action.type) {
     case GENERATE_POSTS:
