@@ -22,8 +22,15 @@ const PostForm = ({ action, actionText, ...props }) => {
   };
 
   // date picker handles default date string value in format YYYY-MM-DD - but default value from initial state is DD-MM-YYYY - causes not displaying value from initial state object
-  const defaultDate = useMemo(() => { const parsedDate = new Date(publishedDate); const date = { day: (parsedDate.getDate()).toString().padStart(2, 0), month: (parsedDate.getMonth() + 1).toString().padStart(2, 0), year: parsedDate.getFullYear(), }; return `${date.year}-${date.month}-${date.day}`; }, [publishedDate]);
-
+  const defaultDate = useMemo(() => {
+    const parsedDate = new Date(publishedDate);
+    const date = {
+      day: (parsedDate.getDate()).toString().padStart(2, 0),
+      month: (parsedDate.getMonth() + 1).toString().padStart(2, 0),
+      year: parsedDate.getFullYear()
+    };
+    return `${date.year}-${date.month}-${date.day}`;
+  }, [publishedDate]);
 
   return (
     <div className="d-flex justify-content-center mt-5">
@@ -34,7 +41,7 @@ const PostForm = ({ action, actionText, ...props }) => {
             <Form.Control  {...register("title", { required: true, minLength: 3 })} type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter title" style={{ width: '70%' }} />
             {errors.title && <small className="d-block form-text text-danger">This field is required with at least 3 characters</small>}
             <Form.Label className="pt-3"><strong>Date</strong></Form.Label>
-            <Form.Control  {...register("date", { required: true, minLength: 3 })} value={defaultDate} type="date" onChange={(e) => setPublishedDate(e.target.value)} placeholder="Enter date" style={{ width: '70%' }} />
+            <Form.Control {...register("date", { required: true, minLength: 3 })} value={defaultDate} type="date" onChange={(e) => setPublishedDate(e.target.value)} placeholder="Enter date" style={{ width: '70%' }} />
             {errors.date && <small className="d-block form-text text-danger">This field is required</small>}
             <Form.Label className="pt-3"><strong>Name</strong></Form.Label>
             <Form.Control {...register("author", { required: true, minLength: 3 })} type="text" value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Enter name" style={{ width: '70%' }} />
@@ -54,6 +61,7 @@ const PostForm = ({ action, actionText, ...props }) => {
             {errors.content && <small className="d-block form-text text-danger">Should not be empty and have at least 20 characters</small>}
           </Form.Group>
           <Button variant="info" type="submit" >Add Post</Button>
+
         </Form>
       </Col>
     </div >
