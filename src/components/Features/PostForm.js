@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -15,16 +15,16 @@ const PostForm = ({ action, actionText, ...props }) => {
   const Allcategories = useSelector(getCategories)
   const [category, setCategory] = useState(props.category || '');
 
-  const { register, handleSubmit: validate, formState: { errors }, getValues, setValue } = useForm();
+  const { register, handleSubmit: validate, formState: { errors }, setValue } = useForm();
 
   const handleSubmit = (e) => {
     action({ title, author, publishedDate, content, category });
   };
 
   // date picker handles default date string value in format YYYY-MM-DD - but default value from initial state is DD-MM-YYYY - causes not displaying value from initial state object
-  const parsedDate = new Date(publishedDate)
-  const date = { day: (parsedDate.getDate()).toString().padStart(2, 0), month: (parsedDate.getMonth() + 1).toString().padStart(2, 0), year: parsedDate.getFullYear() }
-  const defaultDate = `${date.year}-${date.month}-${date.day}`
+  const parsedDate = useMemo(() => new Date(publishedDate), [publishedDate]);
+  const date = useMemo(() => ({ day: (parsedDate.getDate()).toString().padStart(2, 0), month: (parsedDate.getMonth() + 1).toString().padStart(2, 0), year: parsedDate.getFullYear() }), [parsedDate]);
+  const defaultDate = useMemo(() => `${date.year}-${date.month}-${date.day}`, [date]);
 
 
   return (
